@@ -33,6 +33,6 @@ __pycache__
 /.cache
 
 # Ambiente virtual do pipenv
-/.venv
+/.env
+node_modules/
 .env
-env
