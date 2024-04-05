@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { BsTwitter } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
-
+import Loader from "../components/Loader";
 
 const LoginPage = () => {
     const navigate = useNavigate()
@@ -19,7 +19,7 @@ const LoginPage = () => {
             console.error(error)
         }
     })
-
+    if (loginMutation.isLoading) return <Loader />
     return (
         <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
             <div className='m-5 p-10 bg-gray-300'>
