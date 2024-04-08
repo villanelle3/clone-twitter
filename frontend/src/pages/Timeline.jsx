@@ -1,6 +1,11 @@
+import { logout } from "../api/users";
+
 const Timeline = () => {
     return (
-        <div>pagina inicial</div>
+        <div>pagina inicial
+
+            <button onClick={logout}>Logout</button>
+        </div>
     )
 }
 
