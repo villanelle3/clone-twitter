@@ -17,10 +17,9 @@ function App() {
             <Route path="/:username" element={<UserProfile/>} />
           </Route>        
 
-          <Route path="/login" element={<LoginPage/>} />
-          <Route path="/register" element={<Register/>} />
-
         </Route>
+        <Route path="/login" element={<LoginPage/>} />
+        <Route path="/register" element={<Register/>} />
 
       </Routes>
     </BrowserRouter>
