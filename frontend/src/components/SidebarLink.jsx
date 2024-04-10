@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
 const SidebarLink = ({ Icon, text, link, num }) => {
@@ -15,6 +16,13 @@ const SidebarLink = ({ Icon, text, link, num }) => {
             </div>
         </Link>
     );
+};
+
+SidebarLink.propTypes = {
+    Icon: PropTypes.node, // Node for rendering any valid React node
+    text: PropTypes.string,
+    link: PropTypes.string,
+    num: PropTypes.number,
 };
 
 export default SidebarLink;
