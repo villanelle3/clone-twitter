@@ -40,3 +40,7 @@ export const loginReq = async (data) => {
         console.error("Token de acesso vazio");
     }
 };
+
+export const updateProfile = async (data) => {
+    await authAxios.put(`/users/${localStorage.getItem('username')}/`, data)
+}
