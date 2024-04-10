@@ -4,19 +4,24 @@ import Timeline from "./pages/Timeline"
 import Register from "./pages/Register"
 import UserProfile from "./pages/UserProfile"
 import PrivateRoute from "./components/PrivateRoute"
+import Layout from "./components/Layout"
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<PrivateRoute/>}>
-          <Route path="/" element={<Timeline/>} />
-          <Route path="/:username" element={<UserProfile/>} />
-        </Route>        
+        <Route path="/" element={<Layout/>}>
 
-        <Route path="/login" element={<LoginPage/>} />
-        <Route path="/register" element={<Register/>} />
-        
+          <Route element={<PrivateRoute/>}>
+            <Route path="/" element={<Timeline/>} />
+            <Route path="/:username" element={<UserProfile/>} />
+          </Route>        
+
+          <Route path="/login" element={<LoginPage/>} />
+          <Route path="/register" element={<Register/>} />
+
+        </Route>
+
       </Routes>
     </BrowserRouter>
   )
