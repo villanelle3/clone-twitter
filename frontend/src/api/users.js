@@ -15,6 +15,11 @@ export const userProfile = async (username) => {
     return res.data
 }
 
+export const q = async (query) => {
+    const res = await authAxios.get(`/users/u/search/?query=${query}`)
+    return res.data
+}
+
 export const registerReq = async (data) => {
     await axi.post('/users/register/', data);
 };

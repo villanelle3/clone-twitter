@@ -5,13 +5,13 @@ import { userProfile } from "../api/users"
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { IoMdCalendar } from "react-icons/io";
 import EditProfile from "../components/EditProfile";
-// import MyTweets from "../components/MyTweets"
-// import MyLikes from "../components/MyLikes"
-// import MyRe from "../components/MyRe"
-// import MyMedia from "../components/MyMedia"
-// import FollowBtn from "../components/FollowBtn"
+import MyTweets from "../components/MyTweets"
+import MyLikes from "../components/MyLikes"
+import MyRe from "../components/MyRe"
+import MyMedia from "../components/MyMedia"
+import FollowBtn from "../components/FollowBtn"
 import toast from "react-hot-toast"
-// import { getUserTweets } from "../api/tweets"
+import { getUserTweets } from "../api/tweets"
 
 const UserProfile = () => {
 
@@ -26,13 +26,13 @@ const UserProfile = () => {
         queryFn: () => userProfile(username),
     })
 
-    // const { data: tweets, isLoading: loadingTweets, isError: isErrorTweets, error: errorTweets } = useQuery({
-    //     queryFn: () => getUserTweets(username),
-    //     queryKey: ['user_tweets']
-    // })
+    const { data: tweets, isLoading: loadingTweets, isError: isErrorTweets, error: errorTweets } = useQuery({
+        queryFn: () => getUserTweets(username),
+        queryKey: ['user_tweets']
+    })
 
-    // if(loadingTweets) return <div>Loading...</div>
-    // if(isErrorTweets) return <div>Error: {errorTweets.message}</div>
+    if(loadingTweets) return <div>Loading...</div>
+    if(isErrorTweets) return <div>Error: {errorTweets.message}</div>
 
     if (loadingUser ) return <div>Loading...</div>
     if (isErrorUser ) return toast.error('Error')
@@ -84,7 +84,7 @@ const UserProfile = () => {
             ) : (
 
                 <>
-                    {/* <FollowBtn user={user} page={true}/> */}
+                    <FollowBtn user={user} page={true}/>
                 </>
 
                 )}
@@ -143,10 +143,10 @@ const UserProfile = () => {
 
         </div>
 
-            {/* {show === 0 && <MyTweets user={user} tweets={tweets} myUser={myUser} />} */}
-            {/* {show === 1 && <MyRe user={user} />} */}
-            {/* {show === 2 && <MyMedia tweets={tweets} />} */}
-            {/* {show === 3 && <MyLikes user={user} />} */}
+            {show === 0 && <MyTweets user={user} tweets={tweets} myUser={myUser} />}
+            {show === 1 && <MyRe user={user} />}
+            {show === 2 && <MyMedia tweets={tweets} />}
+            {show === 3 && <MyLikes user={user} />}
 
         </>
     )

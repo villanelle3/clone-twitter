@@ -2,6 +2,12 @@ from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from . models import User
 
+class SearchSerializer(serializers.ModelSerializer):
+    username = serializers.ReadOnlyField()
+    class Meta:
+        model = User
+        fields = ['username', 'avatar']
+
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):

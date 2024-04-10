@@ -7,7 +7,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import IsAuthenticated
 
 from .models import User
-from .serializers import MyTokenObtainPairSerializer, MyUserSerializer, UserSerializer
+from .serializers import MyTokenObtainPairSerializer, MyUserSerializer, UserSerializer, SearchSerializer
 from backend.permissions import IsUserOrReadOnly
 
 class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -30,3 +30,14 @@ def register(request):
     )
     serializer = MyUserSerializer(user, many=False)
     return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def search(request):
+    query = request.query_params.get('query', None)
+    if query is not None:
+        users = User.objects.filter(username__icontains=query)
+        serializer = SearchSerializer(users, many=True)
+        return Response({ 'users': serializer.data })
+    else:
+        return Response({'users': []})
