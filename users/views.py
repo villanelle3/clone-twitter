@@ -10,6 +10,14 @@ from .models import User
 from .serializers import MyTokenObtainPairSerializer, MyUserSerializer, UserSerializer, SearchSerializer
 from backend.permissions import IsUserOrReadOnly
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def reco(request):
+    users = User.objects.exclude(username=request.user.username)
+    users = users.exclude(id__in = request.user.following.all())[:5]
+    serializer = SearchSerializer(users, many=True)
+    return Response(serializer.data)
+
 class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
