@@ -10,6 +10,15 @@ export const logout = () => {
     localStorage.clear()
 }
 
+export const follow = async (username) => {
+    await authAxios.post(`/users/follow/${username}/`)
+}
+
+export const reco = async () => {
+    const res = await authAxios.get('/users/reco/')
+    return res.data
+}
+
 export const userProfile = async (username) => {
     const res = await authAxios.get(`/users/${username}/`)
     return res.data

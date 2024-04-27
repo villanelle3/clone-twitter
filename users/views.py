@@ -18,6 +18,27 @@ def reco(request):
     serializer = SearchSerializer(users, many=True)
     return Response(serializer.data)
 
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def follow(request, username):
+    me = request.user
+    user = User.objects.get(username=username)
+
+    if user in me.following.all():
+        me.following.remove(user)
+        return Response({ 'detail': 'Unfollowed' }, status=status.HTTP_200_OK)
+    else:
+        me.following.add(user)
+        # noti = Noti(
+        #     type='follow you',
+        #     to_user=user,
+        #     from_user=me
+        #         )
+        # noti.save()
+        # serializer = NotiSerializer(noti, many=False)
+        # return Response(serializer.data)
+        return Response({ 'detail': 'Followed' }, status=status.HTTP_200_OK)
+
 class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
