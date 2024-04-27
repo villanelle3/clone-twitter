@@ -14,7 +14,6 @@ import toast from "react-hot-toast"
 import { getUserTweets } from "../api/tweets"
 
 const UserProfile = () => {
-
     const { username } = useParams()
     const myUser = localStorage.getItem('username')
 
