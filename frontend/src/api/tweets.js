@@ -1,5 +1,20 @@
 import { authAxios } from "./useAxios";
 
+export const deleteTweet = async (id) => {
+    await authAxios.delete(`/tweets/${id}/`);
+}
+
+export const editTweet = async (data) => {
+    await authAxios.put(`/tweets/${data.get('id')}/`, data);
+}
+
+export const getUserTweets = async (username) => {
+    const response = await authAxios.get(`/tweets/my/${username}/`);
+    // console.log(response.data)
+    return response.data;
+
+}
+
 export const getTweets = async ({ pageParam = 1 }) => {
     const response = await authAxios.get(`/tweets/?page=${pageParam}&pages=10`);
     return response.data;
