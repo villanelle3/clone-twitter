@@ -5,6 +5,7 @@ import Register from "./pages/Register"
 import UserProfile from "./pages/UserProfile"
 import PrivateRoute from "./components/PrivateRoute"
 import Layout from "./components/Layout"
+import SoloTweet from "./pages/SoloTweet"
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
 
           <Route element={<PrivateRoute/>}>
             <Route path="/" element={<Timeline/>} />
+            <Route path="/:id" element={<SoloTweet/>} />
             <Route path="/:username" element={<UserProfile/>} />
           </Route>        
 
