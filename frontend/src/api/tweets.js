@@ -1,5 +1,14 @@
 import { authAxios } from "./useAxios";
 
+export const getSoloTweet = async (id) => {
+    const response = await authAxios.get(`/tweets/${id}/`);
+    return response.data;
+}
+
+export const rt = async (id) => {
+    await authAxios.post(`/tweets/rt/${id}/`);
+}
+
 export const like = async (id) => {
     await authAxios.post(`/tweets/like/${id}/`);
 }
