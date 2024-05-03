@@ -8,6 +8,11 @@ class SearchSerializer(serializers.ModelSerializer):
         model = User
         fields = ['username', 'avatar']
 
+# class NotiUserSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         Model = User
+#         fields = ["username", "avatar"]
+
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
