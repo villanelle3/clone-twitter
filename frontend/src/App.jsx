@@ -15,7 +15,7 @@ function App() {
 
           <Route element={<PrivateRoute/>}>
             <Route path="/" element={<Timeline/>} />
-            <Route path="/:id" element={<SoloTweet/>} />
+            <Route path="/tweet/:id" element={<SoloTweet/>} />
             <Route path="/:username" element={<UserProfile/>} />
           </Route>        
 

@@ -3,7 +3,6 @@ import { useQuery } from "@tanstack/react-query"
 import { AiOutlineMessage } from "react-icons/ai"
 import { getUserRt } from "../api/tweets"
 import { toast } from "react-hot-toast"
-import Loader from "./Loader"
 import Like from "./Like"
 import Rt from "./Rt"
 import { Link } from "react-router-dom"
@@ -17,7 +16,7 @@ const MyRe = ({ user }) => {
         queryFn: () => getUserRt(user.username),
     })
 
-    if (isLoading) return <Loader />
+    if (isLoading) return <div>Loading...</div>
     if (isError) return toast.error(error.message)
 
     return (

@@ -1,5 +1,32 @@
 import { authAxios } from "./useAxios";
 
+export const editComment = async (data) => {
+    await authAxios.put(`/tweets/comment/${data.id}/`, data);
+}
+
+export const deleteComment = async (id) => {
+    await authAxios.delete(`/tweets/comment/${id}/`);
+}
+
+export const addComment = async (data) => {
+    await authAxios.post(`/tweets/comments/${data.id}/`, data);
+}
+
+export const getComments = async (id) => { 
+    const response = await authAxios.get(`/tweets/comments/${id}/`);
+    return response.data;
+}
+
+export const getUserLikes = async (username)  => {
+    const response = await authAxios.get(`/tweets/likes/${username}/`);
+    return response.data;
+}
+
+export const getUserRt = async (username)  => {
+    const response = await authAxios.get(`/tweets/rt/${username}/`);
+    return response.data;
+}
+
 export const getSoloTweet = async (id) => {
     const response = await authAxios.get(`/tweets/${id}/`);
     return response.data;
