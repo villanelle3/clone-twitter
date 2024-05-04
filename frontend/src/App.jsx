@@ -6,6 +6,8 @@ import UserProfile from "./pages/UserProfile"
 import PrivateRoute from "./components/PrivateRoute"
 import Layout from "./components/Layout"
 import SoloTweet from "./pages/SoloTweet"
+import Noti from "./pages/Noti"
+import Chat from "./pages/Chat"
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
             <Route path="/" element={<Timeline/>} />
             <Route path="/tweet/:id" element={<SoloTweet/>} />
             <Route path="/:username" element={<UserProfile/>} />
+            <Route path="/noti" element={<Noti/>} />
+            <Route path="/chat/:user" element={<Chat/>} />
           </Route>        
 
         </Route>

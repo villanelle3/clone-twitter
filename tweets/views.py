@@ -39,7 +39,7 @@ class CommentList(generics.ListCreateAPIView):
         comment.save()
         if request.user != tweet.user:
             Noti.objects.get_or_create(
-                type="replied your tweet",
+                type="replied your Tweet",
                 tweet=tweet,
                 to_user=tweet.user,
                 from_user=request.user,
