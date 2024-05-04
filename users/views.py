@@ -53,7 +53,7 @@ def search(request):
     else:
         return Response({'users': []})
 
-class UserDeatilView(generics.RetrieveUpdateDestroyAPIView):
+class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated, IsUserOrReadOnly]
