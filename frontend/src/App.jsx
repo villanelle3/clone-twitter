@@ -8,6 +8,7 @@ import Layout from "./components/Layout"
 import SoloTweet from "./pages/SoloTweet"
 import Noti from "./pages/Noti"
 import Chat from "./pages/Chat"
+import Contacts from "./pages/Contacts"
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/:username" element={<UserProfile/>} />
             <Route path="/noti" element={<Noti/>} />
             <Route path="/chat/:user" element={<Chat/>} />
+            <Route path="/contacts" element={<Contacts/>} />
           </Route>        
 
         </Route>
